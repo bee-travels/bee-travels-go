@@ -10,22 +10,22 @@ func NewLocalDB(destination []data.Destination) LocalDB {
 	return LocalDB{destination: destination}
 }
 
-func (l LocalDB) ByCityCountry(city, country string) []data.Destination {
-	var res []data.Destination
-
+func (l LocalDB) ByCityCountry(city, country string) data.Destination {
+	var res data.Destination
 	for _, destination := range l.destination {
-		if destination.City == city && destination.Country == country {
-			res = append(res, destination)
+		if normalize(destination.City) == city && normalize(destination.Country) == country {
+			res = destination
+			break
 		}
 	}
 	return res
 }
 
 func (l LocalDB) ByCountry(country string) []data.Destination {
-	var res []data.Destination
+	res := make([]data.Destination, 0)
 
 	for _, destination := range l.destination {
-		if destination.Country == country {
+		if normalize(destination.Country) == country {
 			res = append(res, destination)
 		}
 	}

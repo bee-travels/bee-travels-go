@@ -9,8 +9,8 @@ import (
 func (h *Handler) GetDestinationByCityCountry(c echo.Context) error {
 	city := c.Param("city")
 	country := c.Param("country")
-	destinations := h.db.ByCityCountry(city, country)
-	return c.JSON(http.StatusOK, destinations)
+	destination := h.db.ByCityCountry(city, country)
+	return c.JSON(http.StatusOK, destination)
 }
 
 func (h *Handler) GetDestinationByCountry(c echo.Context) error {

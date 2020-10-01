@@ -8,11 +8,19 @@ import (
 	"github.com/bee-travels/bee-travels-go/destination-v1/internals/data"
 	"github.com/bee-travels/bee-travels-go/destination-v1/internals/handler"
 	"github.com/bee-travels/bee-travels-go/destination-v1/internals/service"
+	"github.com/labstack/echo-contrib/prometheus"
 	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 )
 
 func main() {
 	e := echo.New()
+	e.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
+		Format: "method=${method}, uri=${uri}, status=${status}, time=${latency_human}\n",
+	}))
+
+	p := prometheus.NewPrometheus("echo", nil)
+	p.Use(e)
 
 	d := loadData("./data/destinations.json")
 
