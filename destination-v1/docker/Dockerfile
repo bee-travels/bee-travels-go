@@ -39,6 +39,7 @@ COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certifi
 # Import the compiled executable from the first stage.
 COPY --from=builder /app /app
 
+COPY --from=builder /src/data /data
 
 EXPOSE 9001
 

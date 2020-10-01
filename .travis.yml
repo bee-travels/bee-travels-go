@@ -1,0 +1,20 @@
+
+language: go
+go: 1.14.x
+os: linux
+dist: xenial
+
+services:
+  - docker
+
+jobs:
+  include:
+    - stage: deploy
+      name: Docker Image Build & Push
+      script: skip
+      deploy:
+        - provider: script
+          skip_cleanup: true
+          script: .travis/build-and-push.sh
+          on:
+            branch: master
