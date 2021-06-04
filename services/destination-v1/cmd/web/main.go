@@ -5,9 +5,9 @@ import (
 	"io/ioutil"
 	"log"
 
-	"github.com/bee-travels/bee-travels-go/destination-v1/internals/data"
-	"github.com/bee-travels/bee-travels-go/destination-v1/internals/handler"
-	"github.com/bee-travels/bee-travels-go/destination-v1/internals/service"
+	"github.com/bee-travels/bee-travels-go/services/destination-v1/internals/data"
+	"github.com/bee-travels/bee-travels-go/services/destination-v1/internals/handler"
+	"github.com/bee-travels/bee-travels-go/services/destination-v1/internals/service"
 	"github.com/labstack/echo-contrib/prometheus"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
