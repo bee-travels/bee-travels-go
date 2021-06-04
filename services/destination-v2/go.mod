@@ -16,4 +16,7 @@ require (
 	github.com/opentracing/opentracing-go v1.2.0
 	github.com/pkg/errors v0.8.1
 	github.com/yudai/pp v2.0.1+incompatible // indirect
+	github.com/russross/blackfriday/v2 v2.1.0
 )
+
+replace github.com/russross/blackfriday/v2 => gopkg.in/russross/blackfriday.v2 v2.1.0
