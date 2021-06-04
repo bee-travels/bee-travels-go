@@ -1,6 +1,6 @@
 module github.com/bee-travels/bee-travels-go/destination-v2
 
-go 1.15
+go 1.14
 
 require (
 	github.com/CloudyKit/jet/v3 v3.0.0 // indirect
