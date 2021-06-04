@@ -67,10 +67,11 @@ func Start(serviceName string, init RouterInitializer) error {
 	// Initialize user registered handlers
 	init(&innerRouter{party: app}, pool, sensor)
 
-	address := ":9001"
-	if addr, ok := os.LookupEnv("SERVER_ADDRESS"); ok {
-		address = addr
+	port := ":9001"
+	if addr, ok := os.LookupEnv("PORT"); ok {
+		port = addr
 	}
+	address := fmt.Sprintf(":%s", port)
 
 	fmt.Println("Starting webserver...")
 	err = app.Listen(address)
