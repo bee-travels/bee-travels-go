@@ -2,6 +2,7 @@ package database
 
 import (
 	"context"
+	"fmt"
 	"github.com/bee-travels/bee-travels-go/destination-v2/wrappers/pgxpool"
 	"github.com/elgris/sqrl"
 	instana "github.com/instana/go-sensor"
@@ -11,10 +12,28 @@ import (
 )
 
 func NewDatabasePool(sensor *instana.Sensor) (Pool, error) {
-	connString, found := os.LookupEnv("PG_CONN_STRING")
+	host, found := os.LookupEnv("PG_HOST")
 	if !found {
-		return nil, errors.Errorf("PG_CONN_STRING must be set")
+		return nil, errors.Errorf("PG_HOST must be set")
 	}
+	port, found := os.LookupEnv("PG_PORT")
+	if !found {
+		return nil, errors.Errorf("PG_PORT must be set")
+	}
+	user, found := os.LookupEnv("PG_USER")
+	if !found {
+		return nil, errors.Errorf("PG_USER must be set")
+	}
+	password, found := os.LookupEnv("PG_PASSWORD")
+	if !found {
+		return nil, errors.Errorf("PG_PASSWORD must be set")
+	}
+	database, found := os.LookupEnv("DATABASE")
+	if !found {
+		return nil, errors.Errorf("DATABASE must be set")
+	}
+	connString := fmt.Sprintf("host=%s port=%s dbname=%s user=%s password=%s",
+		host, port, database, user, password)
 
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second*20)
 	defer cancel()
