@@ -28,12 +28,10 @@ func NewDatabasePool(sensor *instana.Sensor) (Pool, error) {
 	if !found {
 		return nil, errors.Errorf("PG_PASSWORD must be set")
 	}
-	database, found := os.LookupEnv("DATABASE")
-	if !found {
-		return nil, errors.Errorf("DATABASE must be set")
-	}
-	connString := fmt.Sprintf("host=%s port=%s dbname=%s user=%s password=%s",
-		host, port, database, user, password)
+	connString := fmt.Sprintf(
+		"host=%s port=%s dbname=beetravels user=%s password=%s",
+		host, port, user, password,
+	)
 
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second*20)
 	defer cancel()
