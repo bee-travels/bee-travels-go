@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/bee-travels/bee-travels-go/destination-v2/wrappers/database"
-	"github.com/bee-travels/bee-travels-go/destination-v2/wrappers/server"
+	"github.com/bee-travels/bee-travels-go/services/destination-v2/wrappers/database"
+	"github.com/bee-travels/bee-travels-go/services/destination-v2/wrappers/server"
 	"github.com/elgris/sqrl"
 	"github.com/jackc/pgx/v4"
 )

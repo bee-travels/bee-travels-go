@@ -3,7 +3,7 @@ package server
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/bee-travels/bee-travels-go/destination-v2/wrappers/database"
+	"github.com/bee-travels/bee-travels-go/services/destination-v2/wrappers/database"
 	instana "github.com/instana/go-sensor"
 	"github.com/iris-contrib/middleware/cors"
 	"github.com/kataras/iris/v12"

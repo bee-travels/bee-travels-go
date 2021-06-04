@@ -3,7 +3,7 @@ package database
 import (
 	"context"
 	"fmt"
-	"github.com/bee-travels/bee-travels-go/destination-v2/wrappers/pgxpool"
+	"github.com/bee-travels/bee-travels-go/services/destination-v2/wrappers/pgxpool"
 	"github.com/elgris/sqrl"
 	instana "github.com/instana/go-sensor"
 	"github.com/pkg/errors"

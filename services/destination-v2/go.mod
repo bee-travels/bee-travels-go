@@ -1,4 +1,4 @@
-module github.com/bee-travels/bee-travels-go/destination-v2
+module github.com/bee-travels/bee-travels-go/services/destination-v2
 
 go 1.14
 
