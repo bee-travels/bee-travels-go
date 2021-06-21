@@ -40,6 +40,7 @@ func Start(serviceName string, init RouterInitializer) error {
 		&instana.Options{
 			Service:           serviceName,
 			EnableAutoProfile: true,
+			LogLevel:          instana.Debug,
 		},
 	)
 
