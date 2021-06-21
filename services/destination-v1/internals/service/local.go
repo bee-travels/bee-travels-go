@@ -1,6 +1,6 @@
 package service
 
-import "github.com/bee-travels/bee-travels-go/destination-v1/internals/data"
+import "github.com/bee-travels/bee-travels-go/services/destination-v1/internals/data"
 
 type LocalDB struct {
 	destination []data.Destination

@@ -6,7 +6,7 @@ func capitalize(name string) string {
 	name = strings.ToLower(name)
 	tokens := strings.Split(name, "-")
 	for i, token := range tokens {
-		if includes(token) {
+		if !includes(token) {
 			tokens[i] = strings.ToUpper(string(token[0])) + token[1:]
 		}
 	}
