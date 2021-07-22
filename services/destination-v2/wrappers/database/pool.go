@@ -2,7 +2,7 @@ package database
 
 import (
 	"context"
-	"github.com/bee-travels/bee-travels-go/destination-v2/wrappers/pgxpool"
+	"github.com/bee-travels/bee-travels-go/services/destination-v2/wrappers/pgxpool"
 	"github.com/jackc/pgconn"
 	"github.com/jackc/pgx/v4"
 )

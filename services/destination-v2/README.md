@@ -20,7 +20,10 @@ The source of the destination service data is provided from a database. The foll
 
 ## Environment Variables
 
-* `PG_CONN_STRING` - postgresql standard connection string according to [LIBPG](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING)
+* `PG_HOST` - variable for the `postgres` database host
+* `PG_PORT` - variable for the `postgres` database port
+* `PG_USER` - variable for the `postgres` database user
+* `PG_PASSWORD` - variable for the `postgres` database password
 
 * `SERVER_ADDRESS` - Overrides the listening address (`host:port`)
 

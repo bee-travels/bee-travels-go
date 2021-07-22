@@ -1,8 +1,9 @@
 package main
 
 import (
-	"github.com/bee-travels/bee-travels-go/destination-v2/wrappers/database"
-	"github.com/bee-travels/bee-travels-go/destination-v2/wrappers/server"
+	"fmt"
+	"github.com/bee-travels/bee-travels-go/services/destination-v2/wrappers/database"
+	"github.com/bee-travels/bee-travels-go/services/destination-v2/wrappers/server"
 	"github.com/elgris/sqrl"
 	"github.com/jackc/pgx/v4"
 )
@@ -13,6 +14,8 @@ func queryLocations(pool database.Pool, ctx server.RequestContext, country strin
 		selector.Where("country = ?", country)
 	}
 
+	sql, args, _ := selector.ToSql()
+	fmt.Printf("sql: %s, args: %+v", sql, args)
 	locations := make([]Location, 0)
 	err := database.QueryFunc(pool, ctx, selector, func(row pgx.Row) error {
 		var location Location
@@ -71,7 +74,7 @@ func queryDestinations(pool database.Pool, ctx server.RequestContext, country, c
 
 func buildBaseQuery(wildcardSelect bool) *sqrl.SelectBuilder {
 	selector := database.QueryBuilder().Select()
-	if wildcardSelect {
+	if !wildcardSelect {
 		selector.Columns("id", "city", "country", "latitude", "longitude", "population", "description", "images")
 	} else {
 		selector.Columns("country", "city")

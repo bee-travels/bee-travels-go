@@ -3,7 +3,7 @@ package server
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/bee-travels/bee-travels-go/destination-v2/wrappers/database"
+	"github.com/bee-travels/bee-travels-go/services/destination-v2/wrappers/database"
 	instana "github.com/instana/go-sensor"
 	"github.com/iris-contrib/middleware/cors"
 	"github.com/kataras/iris/v12"
@@ -40,6 +40,7 @@ func Start(serviceName string, init RouterInitializer) error {
 		&instana.Options{
 			Service:           serviceName,
 			EnableAutoProfile: true,
+			LogLevel:          instana.Debug,
 		},
 	)
 
@@ -67,10 +68,11 @@ func Start(serviceName string, init RouterInitializer) error {
 	// Initialize user registered handlers
 	init(&innerRouter{party: app}, pool, sensor)
 
-	address := ":9001"
-	if addr, ok := os.LookupEnv("SERVER_ADDRESS"); ok {
-		address = addr
+	port := ":9001"
+	if addr, ok := os.LookupEnv("PORT"); ok {
+		port = addr
 	}
+	address := fmt.Sprintf(":%s", port)
 
 	fmt.Println("Starting webserver...")
 	err = app.Listen(address)
